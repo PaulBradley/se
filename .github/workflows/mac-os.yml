@@ -23,15 +23,15 @@ jobs:
 
     - name: Modiles
       run: |
-        go get go.riyazali.net/sqlite
-        go get github.com/leekchan/accounting
+        go get -u go.riyazali.net/sqlite
+        go get -u github.com/leekchan/accounting
 
     - name: Build
-      run: go build -v -buildmode=c-shared -o s0-sqlite-extensions-osx-x86.so ./...
+      run: go build -v -buildmode=c-shared -o s0.so ./...
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
-        name: osx-binaey
-        path: s0-sqlite-extensions-osx-x86.so
+        name: osx-bin
+        path: s0.so
         retention-days: 2
