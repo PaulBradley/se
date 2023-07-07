@@ -22,10 +22,12 @@ jobs:
         go-version: 1.19
 
     - name: Modiles
-      run: go mod tidy
+      run: |
+        go get go.riyazali.net/sqlite
+        go get github.com/leekchan/accounting
 
     - name: Build
-      run: CGO_ENABLED=0 | go build -v -buildmode=c-shared -o s0-sqlite-extensions-osx-x86.so ./...
+      run: go build -v -buildmode=c-shared -o s0-sqlite-extensions-osx-x86.so ./...
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
