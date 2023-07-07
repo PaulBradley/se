@@ -26,3 +26,10 @@ jobs:
 
     - name: Build
       run: go build -v -buildmode=c-shared -o s0-sqlite-extensions-amd64.so ./...
+
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: osx-binaey
+        path: s0-sqlite-extensions-amd64.so
+        retention-days: 2
