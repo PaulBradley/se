@@ -1,4 +1,4 @@
-name: Build osx version
+name: Build Windows Version
 
 on:
   push:
@@ -24,11 +24,11 @@ jobs:
         go get -u github.com/leekchan/accounting
 
     - name: Build
-      run: go build -v -buildmode=c-shared -o s0-sqlite-extensions-osx-amd64.so ./...
+      run: go build -v -buildmode=c-shared -o s0-sqlite-extensions-win-amd64.dll ./...
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
         name: osx-binary
-        path: s0-sqlite-extensions-osx-amd64.so
+        path: s0-sqlite-extensions-win-amd64.dll
         retention-days: 2
