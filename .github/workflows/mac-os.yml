@@ -1,4 +1,4 @@
-name: Build osx version
+name: Build OSX Version
 
 on:
   push:
