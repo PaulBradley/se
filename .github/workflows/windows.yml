@@ -24,11 +24,11 @@ jobs:
         go get -u github.com/leekchan/accounting
 
     - name: Build
-      run: go build -v -buildmode=c-shared -o s0-sqlite-extensions-win-amd64.dll ./...
+      run: env GOOS=windows GOARCH=amd64 go build -v -buildmode=c-shared -o s0-sqlite-extensions-win-amd64.dll ./...
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
-        name: osx-binary
+        name: windows-binary
         path: s0-sqlite-extensions-win-amd64.dll
         retention-days: 2
